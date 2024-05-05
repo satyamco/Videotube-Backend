@@ -1,6 +1,7 @@
 # VideoTube Full API
 
-VideoTube Full API is a RESTful API backend for a video-sharing platform, allowing users to upload, view, like, and comment on videos.
+VideoTube Full API is a RESTful API backend for a video-sharing platform, allowing users to upload, view, like, and comment on videos and user can tweet.
+
 
 ## Introduction
 
@@ -74,7 +75,8 @@ Once the server is running, you can use tools like Postman or curl to interact w
 
  ## base URL
  
-- http://localhost:4000/api/v1
+- Localhost: http://localhost:4000/api/v1
+- Public: https://videotube-backend.onrender.com/api/v1/healthcheck
 
 ## healthcheck EndPoint
 
@@ -88,7 +90,7 @@ POST http://localhost:4000/api/v1/users/login: Login with username and password.
 
 GET http://localhost:4000/api/v1/users/current-user: get current user.
 
-POST http://localhost:4000/api/v1/users/change-password: FOR changing password.
+PATCH http://localhost:4000/api/v1/users/change-password: FOR changing password.
 
 POST http://localhost:4000/api/v1/users/logout: logout current user.
 
@@ -104,7 +106,62 @@ PATCH  http://localhost:4000/api/v1/videos/:videoID : UPDATE video details
 
 ## Tweets Routes 
 
-POST http://localhost:4000/api/v1/tweets
+POST http://localhost:4000/api/v1/tweets : createTweet.
+
+PATCH http://localhost:4000/api/v1/tweets/:tweetId  :updatTweet.
+
+DELETE http://localhost:4000/api/v1/tweets/:tweetId  :deleteTweet.
+
+GET http://localhost:4000/api/v1/tweets/:userId/:tweetId :getUsersTweets.
+
+
+## Subscription Routes
+
+POST http://localhost:4000/api/v1/subscriptions/c/:channelId   :SubscriptionToggle.
+
+GET  http://localhost:4000/api/v1/subscriptions/c/:channelId   :GetUserChannelSubscribers.
+
+GET http://localhost:4000/api/v1/subscriptions/u/:subscriberId   :GetSubscribedChannel.
+
+## Playlist Routes
+
+Post http://localhost:4000/api/v1/playlist/:playlistId   :CreatePlaylist.
+
+GET http://localhost:4000/api/v1/playlist/:playlistId   :getPlaylistById.
+
+PATCH http://localhost:4000/api/v1/playlist/:playlistId :updatePlaylist.
+
+PATCH http://localhost:4000/api/v1/playlist/add/:videoId/:playlistId :addVideoToPlaylist.
+
+PATCH http://localhost:4000/api/v1/playlist/remove/:videoId/:playlistId :RemoveVideoFromPlaylist
+
+GET http://localhost:4000/api/v1/playlist/user/:userId :GetPlaylistByUserId
+
+## Like Routes
+
+POST http://localhost:4000/api/v1/likes/toggle/v/:videoId :toggleVideoLike.
+
+POST http://localhost:4000/api/v1/likes/toggle/c/:commentId :toggleCommentLike.
+
+POST http://localhost:4000/api/v1/likes/toggle/t/:tweetId :toggleTweetLike
+
+GET http://localhost:4000/api/v1/likes/videos  :getLikedVideos.
+
+## Dasboard Routes
+
+GET http://localhost:4000/api/v1/dashboard/stats  :getTotalLike, totalViews, totalSubscribers, totalVideos.
+
+GET http://localhost:4000/api/v1/dashboard/videos  :getChannelVideos.
+
+## Comments Routes
+
+GET http://localhost:4000/api/v1/comments/:videoId :getVideoComments.
+
+POST http://localhost:4000/api/v1/comments/:videoId :addCommentToVideo.
+
+PATCH http://localhost:4000/api/v1/comments/c/:commentId :upadteComment.
+
+DELETE http://localhost:4000/api/v1/comments/c/:commentId  :DelelteComment.
 
 
 ## Contributing
