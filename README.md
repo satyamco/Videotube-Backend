@@ -70,20 +70,42 @@ The API will start running on http://localhost:4000 by default.
 ## Usage
 Once the server is running, you can use tools like Postman or curl to interact with the API endpoints. Refer to the API Endpoints section for details on available endpoints and their usage.
 
-## API Endpoints
--UserRoutes
+# API Endpoints
+
+ ## base URL
+ 
+- http://localhost:4000/api/v1
+
+## healthcheck EndPoint
+
+GET  http://localhost:4000/api/v1/healthcheck
+
+## User Routes
+ 
 POST http://localhost:4000/api/v1/users/register : Register a new user.
-POST http://localhost:4000/api/v1/users/login: Login with username and password to obtain a JWT token.
-POST /api/auth/logout: Logout and invalidate the current JWT token.
-GET /api/videos: Get a list of all videos.
-GET /api/videos/:id: Get details of a specific video.
-POST /api/videos: Upload a new video.
-PUT /api/videos/:id: Update details of a specific video.
-DELETE /api/videos/:id: Delete a specific video.
-POST /api/videos/:id/like: Like a specific video.
-POST /api/videos/:id/comment: Add a comment to a specific video.
-GET /api/users/:id/videos: Get a list of videos uploaded by a specific user.
+
+POST http://localhost:4000/api/v1/users/login: Login with username and password.
+
+GET http://localhost:4000/api/v1/users/current-user: get current user.
+
+POST http://localhost:4000/api/v1/users/change-password: FOR changing password.
+
+POST http://localhost:4000/api/v1/users/logout: logout current user.
+
+ ## Video Routes
+ 
+POST http://localhost:4000/api/v1/vidoes : for upload a video.
+
+GET http://localhost:4000/api/v1/vidoes : get all videos.
+
+GET http://localhost:4000/api/v1/videos/:videoID : get video by Id
+
+PATCH  http://localhost:4000/api/v1/videos/:videoID : UPDATE video details
+
+## Tweets Routes 
+
+POST http://localhost:4000/api/v1/tweets
+
 
 ## Contributing
 Contributions to VideoTube Full API are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-
